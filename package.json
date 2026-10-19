@@ -12,5 +12,12 @@
   "type": "commonjs",
   "devDependencies": {
     "terser": "^5.51.2"
+  },
+  "dependencies": {
+    "acorn": "^8.19.0",
+    "buffer-from": "^1.1.2",
+    "commander": "^2.20.3",
+    "source-map": "^0.6.1",
+    "source-map-support": "^0.5.21"
   }
 }
