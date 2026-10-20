@@ -10,25 +10,26 @@
         margin: 0;
         min-height: 100vh;
         font-family: system-ui, sans-serif;
-        color: #895129;
+        color: #f3ecd2;
         background: #2c8060;
     }
 
     header {
         padding: 1rem 1.5rem 0;
+        text-align: center;
     }
 
     h1 {
         margin: 0 0 0.5rem;
     }
 
-    #area {
+    #play-area {
         position: relative;
         min-height: 60vh;
         margin: 1rem;
-        border: 3px solid rgba(137, 81, 41, 0.5);
+        border: 4px solid #0f2a1f;
         border-radius: 12px;
-        background: rgba(255, 255, 255, 0.08);
+        background: #a9c1cf;
         overflow: hidden;
     }
 
@@ -40,34 +41,24 @@
         width: 80px;
         height: auto;
         cursor: pointer;
-        transition: left 0.2s ease, top 0.2s ease;
+        user-select: none;
+        -webkit-user-drag: none;
     }
 </style>
 
 <body>
     <header>
         <h1>touch grass</h1>
-        <p>lorem ipsum</p>
+        <p>Grass attempts: 0</p>
     </header>
 
-    <main id="area">
-        <img src="grass_block.png" />
+    <main id="play-area">
+        <img id="grass" src="images/grass_block.png">
     </main>
 
     <script>
-        const area = document.getElementById("area");
+        const area = document.getElementById("play-area");
         const image = document.getElementById("grass");
-
-        function moveImage() {
-            const areaRect = area.getBoundingClientRect();
-            const imageWidth = image.offsetWidth;
-            const imageHeight = image.offsetHeight;
-            const maxX = Math.max(areaRect.width - imageWidth, 0);
-            const maxY = Math.max(areaRect.height - imageHeight, 0);
-
-            const newX = Math.random() * maxX;
-            const newY = Math.random() * maxY;
-        }
 
         image.addEventListener("pointerenter", moveImage);
     </script>
