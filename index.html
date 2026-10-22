@@ -82,12 +82,20 @@
             //not allowing block to leave the area
             const maxX = Math.max(areaRect.width - imageWidth, 0);
             const maxY = Math.max(areaRect.height - imageHeight, 0);
+            //creating a new spawning area
             const newX = Math.random() * maxX;
             const newY = Math.random() * maxY;
             // disappear animation
             image.style.opacity = 0;
             image.style.pointerEvents = "none";
-        }
+            // reappear and movement animations
+            setTimeout(() => {
+                image.style.opacity = 1;
+                image.style.pointerEvents = "auto";
+                image.style.left = `${newX}px`;
+                image.style.top = `${newY}px`;
+            }, 400);
+    }
         image.addEventListener("pointerenter", moveImage);
     </script>
 </body>
