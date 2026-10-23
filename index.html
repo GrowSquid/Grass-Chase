@@ -59,9 +59,62 @@
         user-select: none;
         -webkit-user-drag: none;
     }
+    /* using inset for the first time*/
+    #start-screen {
+        position: fixed;
+        inset: 0;
+        /* using z axis to keep the button above the card*/
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        background: #0000006f;
+        align-items: center;
+    }
+
+    #start-screen.hidden {
+        display: none;
+    }
+
+    .start-card {
+        width: 100%;
+        max-width: 400px;
+        padding: 2rem;
+        text-align: center;
+        background: #ebeae3;
+        color: #464343;
+        border-radius: 12px;
+    }
+
+    .start-card h2 {
+        margin: 0 0 1rem;
+        line-height: 2rem;
+    }
+
+    .start-card p {
+        margin: 0 0 1.5rem;
+        line-height: 1.5;
+    }
+
+    #start-button {
+        font-size: 1.1rem;
+        padding: 0.6rem 2rem;
+        color: #e4dfcf;
+        background: #2c8060;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
 </style>
 
 <body>
+    <div id="start-screen">
+        <div class="start-card">
+            <h2>Touch Grass</h2>
+            <p>Move your cursor onto the grass block to <b>"attempt"</b> to ground yourself</p>
+            <button id="start-button">START</button>
+        </div>
+    </div>
     <header>
         <h1>touch grass</h1>
         <p>Grass attempts: <span id="attempts">0</span></p>
@@ -95,7 +148,7 @@
             // disappear animation
             image.style.opacity = 0;
             image.style.pointerEvents = "none";
-            // reappear and movement animationsf
+            // reappear and movement animations
             setTimeout(() => {
                 image.style.opacity = 1;
                 image.style.pointerEvents = "auto";
@@ -104,5 +157,10 @@
             }, 250);
     }
         image.addEventListener("pointerenter", moveImage);
+        // start screen mechanics
+        const startScreen = document.getElementById("start-screen")
+        const startButton = document.getElementById("start-button")
+
+        startButton.addEventListener("click", () => { startScreen.classList.add("hidden")})
     </script>
 </body>
