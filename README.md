@@ -1,12 +1,12 @@
 # Touch Grass
 Welcome to the GrowSquid's third ever Hackclub Project!  
-I have created a game in HTML to attempt to do the hardest possible thing as a programmer
-Hover your cursor over the grass to attempt to graze it
+I have created a game in HTML to attempt to do the hardest possible thing as a programmer  
+Hover your cursor over the grass to attempt to graze it  
 
 ## Features  
-A 15s timer
-Attempt counter
-Moving background
+A 15s timer  
+Attempt counter  
+Moving background  
 
 ## Deployment  
 Open via Github Pages:  
