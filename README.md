@@ -10,9 +10,9 @@ Moving background
 
 ## Deployment  
 Open via Github Pages:  
-https://growsquid.github.io/Grass-Chase/
+https://growsquid.github.io/Grass-Chase/  
 OR  
-Download the source files directly, including the images  
+Download the source files directly, including the images   
 and run in a browser of your choice
 
 **THANKS FOR READING**
