@@ -22,7 +22,7 @@
         background-size: 60px 60px;
         /* background animation*/
         background-position: 0, 0, 40px, 40px;
-        animation: scrolling 10s linear infinite;
+        animation: scrolling 18s linear infinite;
     }
     @keyframes scrolling {
         from {background-position: 0 0;}
@@ -107,6 +107,13 @@
         border-radius: 8px;
         cursor: pointer;
     }
+
+    #timer-area {
+        margin: 0 1rem 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
 </style>
 
 <body>
@@ -117,7 +124,7 @@
         </div>
     </div>
     <header>
-        <h1>touch grass</h1>
+        <h1>Touch Grass</h1>
         <p>Grass attempts: <span id="attempts">0</span></p>
     </header>
 
@@ -125,13 +132,21 @@
         <img id="grass" src="images/grass_block.png">
     </main>
 
+    <p id="timer-area">Time left: <span id="timer">15</span>s</p>
+
     <script>
         const area = document.getElementById("play-area");
         const image = document.getElementById("grass");
         const attemptsnumber = document.getElementById("attempts")
+        const timertext = document.getElementById("timer")
+        const timelimit = 15
         let attempts = 0;
+        let timeleft = timelimit
+        let stopgame = false
 
         function moveImage() {
+            // game end screen
+            if (stopgame) return;
             // counter increases by 1
             attempts++;
             attemptsnumber.textContent = attempts
@@ -152,7 +167,7 @@
             // reappear and movement animations
             setTimeout(() => {
                 image.style.opacity = 1;
-                image.style.pointerEvents = "auto";
+                image.style.pointerEvents = stopgame ? "none" : "auto";
                 image.style.left = `${newX}px`;
                 image.style.top = `${newY}px`;
             }, 250);
@@ -162,6 +177,23 @@
         const startScreen = document.getElementById("start-screen")
         const startButton = document.getElementById("start-button")
 
-        startButton.addEventListener("click", () => { startScreen.classList.add("hidden")})
+        //timer mechanics
+        function timerstart() {
+            const timerId = setInterval(() => {
+                timeleft--;
+                timertext.textContent = timeleft;
+
+                if (timeleft <= 0) {
+                    clearInterval(timerId);
+                    stopgame = true
+                    image.style.pointerEvents = "none";
+                }
+            }, 1000);
+        }
+
+        startButton.addEventListener("click", () => {
+            startScreen.classList.add("hidden");
+            timerstart();
+        });
     </script>
 </body>
